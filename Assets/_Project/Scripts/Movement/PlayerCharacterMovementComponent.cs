@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils;
 
 public class PlayerCharacterMovementComponent : CharacterMovementComponent, IMoveListener
 {
@@ -10,16 +11,12 @@ public class PlayerCharacterMovementComponent : CharacterMovementComponent, IMov
     private float _speed = 5.0f;
 
     private Vector3 _movementInput;
-    private Vector3 _playerVelocity;
     private bool _isGrounded = false;
 
     protected override void Awake()
     {
         base.Awake();
-        if (!_inputBinder)
-        {
-            throw new System.NullReferenceException($"Object {name} {nameof(_inputBinder)} is not assigned in the inspector. Please assign it before playing.");
-        }
+        this.AssertReference(_inputBinder);
     }
 
     private void Start()
