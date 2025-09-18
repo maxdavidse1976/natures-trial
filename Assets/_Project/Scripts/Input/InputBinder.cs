@@ -10,6 +10,13 @@ public interface IMoveListener
     void OnMoveCanceled(InputAction.CallbackContext context);
 }
 
+public interface ILookListener
+{
+    void OnLookStart(InputAction.CallbackContext context);
+    void OnLookPerformed(InputAction.CallbackContext context);
+    void OnLookCanceled(InputAction.CallbackContext context);
+}
+
 public class InputBinder : MonoBehaviour, IPlayerActions, IUIActions
 {
     [SerializeField]
@@ -54,6 +61,20 @@ public class InputBinder : MonoBehaviour, IPlayerActions, IUIActions
         _playerInputs.Move.started -= listener.OnMoveStart;
         _playerInputs.Move.performed -= listener.OnMovePerformed;
         _playerInputs.Move.canceled -= listener.OnMoveCanceled;
+    }
+
+    public void AddLookListener(ILookListener listener)
+    {
+        _playerInputs.Look.started += listener.OnLookStart;
+        _playerInputs.Look.performed += listener.OnLookPerformed;
+        _playerInputs.Look.canceled += listener.OnLookCanceled;
+    }
+
+    public void RemoveLookListener(ILookListener listener)
+    {
+        _playerInputs.Look.started -= listener.OnLookStart;
+        _playerInputs.Look.performed -= listener.OnLookPerformed;
+        _playerInputs.Look.canceled -= listener.OnLookCanceled;
     }
 
     #endregion

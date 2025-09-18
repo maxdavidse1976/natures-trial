@@ -9,7 +9,7 @@ public class PlayerCharacterMovementComponent : CharacterMovementComponent, IMov
     [SerializeField]
     private float _speed = 5.0f;
 
-    private Vector3 _relativeMovementInput;
+    private Vector3 _movementInput;
     private Vector3 _playerVelocity;
     private bool _isGrounded = false;
 
@@ -39,23 +39,27 @@ public class PlayerCharacterMovementComponent : CharacterMovementComponent, IMov
 
     private void SimpleMoveOnUpdate()
     {
-        if (_isGrounded && _relativeMovementInput == Vector3.zero)
+        if (_isGrounded && _movementInput == Vector3.zero)
         {
             return;
         }
 
-        _isGrounded = SimpleMove(_relativeMovementInput, _speed);
+        _isGrounded = SimpleMove(GetRelativeMovement(), _speed);
+    }
+
+    private Vector3 GetRelativeMovement()
+    {
+        Vector3 forward = transform.forward * _movementInput.y;
+        Vector3 right = transform.right * _movementInput.x;
+        Vector3 direction = forward + right;
+        return direction.normalized;
     }
 
     #region IMoveListener Interface
 
     public void OnMovePerformed(InputAction.CallbackContext context)
     {
-        Vector2 movementInput = context.ReadValue<Vector2>();
-        Vector3 forward = transform.forward * movementInput.y;
-        Vector3 right = transform.right * movementInput.x;
-        Vector3 direction = forward + right;
-        _relativeMovementInput = direction.normalized;
+        _movementInput = context.ReadValue<Vector2>();
     }
 
     public void OnMoveStart(InputAction.CallbackContext context)
@@ -65,7 +69,7 @@ public class PlayerCharacterMovementComponent : CharacterMovementComponent, IMov
 
     public void OnMoveCanceled(InputAction.CallbackContext context)
     {
-        _relativeMovementInput = Vector3.zero;
+        _movementInput = Vector3.zero;
     }
 
     #endregion

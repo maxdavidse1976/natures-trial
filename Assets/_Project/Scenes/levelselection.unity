@@ -466,7 +466,7 @@ Transform:
   m_GameObject: {fileID: 482437811}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1113,6 +1113,7 @@ GameObject:
   - component: {fileID: 1828505147}
   - component: {fileID: 1828505145}
   - component: {fileID: 1828505146}
+  - component: {fileID: 1828505148}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -1192,6 +1193,23 @@ MonoBehaviour:
   _interactAction:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1828505148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828505143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff6431783b13634faf4c805ac6fde4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputBinder: {fileID: 1828505147}
+  _cursorMode: 0
+  _sensitivityX: 30
+  _sensitivityY: 15
+  _yRotationRange: {x: -15, y: 20}
 --- !u!1 &2036913639
 GameObject:
   m_ObjectHideFlags: 0
