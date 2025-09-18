@@ -1206,7 +1206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputBinder: {fileID: 1828505147}
-  _cursorMode: 0
+  _cursorMode: 1
   _sensitivityX: 30
   _sensitivityY: 15
   _yRotationRange: {x: -15, y: 20}
