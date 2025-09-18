@@ -8,7 +8,7 @@ public class TooltipComponent : MonoBehaviour, ILookHoverer
 
     [SerializeField]
     private string _tooltipTitle;
-    [SerializeField]
+    [SerializeField, TextArea]
     private string _tooltipDescription;
 
     private void Awake()
