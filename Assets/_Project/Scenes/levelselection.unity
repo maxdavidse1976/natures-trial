@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 1828505145}
-  _inputBinder: {fileID: 0}
+  _inputBinder: {fileID: 1828505147}
   _speed: 5
 --- !u!114 &1828505147
 MonoBehaviour:
