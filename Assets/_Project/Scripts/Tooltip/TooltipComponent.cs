@@ -26,4 +26,4 @@ public class TooltipComponent : MonoBehaviour, ILookHoverer
     {
         _tooltipData.RequestHideTooltip();
     }
-}
+}   
