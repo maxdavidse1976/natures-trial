@@ -47,6 +47,11 @@ public class CameraLookHoverComponent : MonoBehaviour
         }
     }
 
+    public void TryInteract()
+    {
+        _currentLookHoverer?.OnLookHoverInteract();
+    }
+
     private void TryExitCurrent()
     {
         _currentLookHoverer?.OnLookHoverExit();

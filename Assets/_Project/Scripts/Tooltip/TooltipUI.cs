@@ -23,9 +23,12 @@ public class TooltipUI : MonoBehaviour
         this.AssertReference(_descriptionText);
         this.AssertReference(_canvasGroup);
 
-        _tooltipData.OnTooltipShowRequest += ShowTooltip;
-        _tooltipData.OnTooltipHideRequest += HideTooltip;
-        _tooltipData.OnTooltipInformationChanged += UpdateTooltipInformation;
+        BindToEvents();
+    }
+
+    private void OnDisable()
+    {
+        UnbindFromEvents();
     }
 
     private void UpdateTooltipInformation(TooltipInformation information)
@@ -42,5 +45,19 @@ public class TooltipUI : MonoBehaviour
     private void ShowTooltip()
     {
         _canvasGroup.alpha = 1;
+    }
+
+    private void BindToEvents()
+    {
+        _tooltipData.OnTooltipShowRequest += ShowTooltip;
+        _tooltipData.OnTooltipHideRequest += HideTooltip;
+        _tooltipData.OnTooltipInformationChanged += UpdateTooltipInformation;
+    }
+
+    private void UnbindFromEvents()
+    {
+        _tooltipData.OnTooltipShowRequest -= ShowTooltip;
+        _tooltipData.OnTooltipHideRequest -= HideTooltip;
+        _tooltipData.OnTooltipInformationChanged -= UpdateTooltipInformation;
     }
 }

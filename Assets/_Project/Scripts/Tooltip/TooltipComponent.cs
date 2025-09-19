@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 public class TooltipComponent : MonoBehaviour, ILookHoverer
@@ -10,6 +11,9 @@ public class TooltipComponent : MonoBehaviour, ILookHoverer
     private string _tooltipTitle;
     [SerializeField, TextArea]
     private string _tooltipDescription;
+
+    [SerializeField]
+    private UnityEvent _tooltipInteracted;
 
     private void Awake()
     {
@@ -25,5 +29,10 @@ public class TooltipComponent : MonoBehaviour, ILookHoverer
     public void OnLookHoverExit()
     {
         _tooltipData.RequestHideTooltip();
+    }
+
+    public void OnLookHoverInteract()
+    {
+        _tooltipInteracted?.Invoke();
     }
 }   
