@@ -1,12 +1,6 @@
 using UnityEngine;
 using Utils;
 
-public interface ILookHoverer
-{
-    void OnLookHoverEnter();
-    void OnLookHoverExit();
-}
-
 public class CameraLookHoverComponent : MonoBehaviour
 {
     [SerializeField]

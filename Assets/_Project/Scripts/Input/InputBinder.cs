@@ -1,21 +1,8 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static InputSystem_Actions;
-
-public interface IMoveListener
-{
-    void OnMoveStart(InputAction.CallbackContext context);
-    void OnMovePerformed(InputAction.CallbackContext context);
-    void OnMoveCanceled(InputAction.CallbackContext context);
-}
-
-public interface ILookListener
-{
-    void OnLookStart(InputAction.CallbackContext context);
-    void OnLookPerformed(InputAction.CallbackContext context);
-    void OnLookCanceled(InputAction.CallbackContext context);
-}
 
 public class InputBinder : MonoBehaviour, IPlayerActions, IUIActions
 {
@@ -77,6 +64,48 @@ public class InputBinder : MonoBehaviour, IPlayerActions, IUIActions
         _playerInputs.Look.canceled -= listener.OnLookCanceled;
     }
 
+    public void AddPlantCropListener(IPlantCropListener listener)
+    {
+        _playerInputs.PlantCrop.started += listener.OnPlantCropStart;
+        _playerInputs.PlantCrop.performed += listener.OnPlantCropPerformed;
+        _playerInputs.PlantCrop.canceled += listener.OnPlantCropCanceled;
+    }
+
+    public void RemovePlantCropListener(IPlantCropListener listener)
+    {
+        _playerInputs.PlantCrop.started -= listener.OnPlantCropStart;
+        _playerInputs.PlantCrop.performed -= listener.OnPlantCropPerformed;
+        _playerInputs.PlantCrop.canceled -= listener.OnPlantCropCanceled;
+    }
+
+    public void AddPlantGrassListener(IPlantGrassListener listener)
+    {
+        _playerInputs.PlantGrass.started += listener.OnPlantGrassStart;
+        _playerInputs.PlantGrass.performed += listener.OnPlantGrassPerformed;
+        _playerInputs.PlantGrass.canceled += listener.OnPlantGrassCanceled;
+    }
+
+    public void RemovePlantGrassListener(IPlantGrassListener listener)
+    {
+        _playerInputs.PlantGrass.started -= listener.OnPlantGrassStart;
+        _playerInputs.PlantGrass.performed -= listener.OnPlantGrassPerformed;
+        _playerInputs.PlantGrass.canceled -= listener.OnPlantGrassCanceled;
+    }
+
+    public void AddWaterListener(IWaterListener listener)
+    {
+        _playerInputs.Water.started += listener.OnWaterStart;
+        _playerInputs.Water.performed += listener.OnWaterPerformed;
+        _playerInputs.Water.canceled += listener.OnWaterCanceled;
+    }
+
+    public void RemoveWaterListener(IWaterListener listener)
+    {
+        _playerInputs.Water.started -= listener.OnWaterStart;
+        _playerInputs.Water.performed -= listener.OnWaterPerformed;
+        _playerInputs.Water.canceled -= listener.OnWaterCanceled;
+    }
+
     #endregion
 
     #region IPlayerActions Interface
@@ -124,6 +153,21 @@ public class InputBinder : MonoBehaviour, IPlayerActions, IUIActions
     public void OnSprint(InputAction.CallbackContext context)
     {
         
+    }
+
+    public void OnPlantCrop(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnPlantGrass(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnWater(InputAction.CallbackContext context)
+    {
+
     }
 
     #endregion
@@ -179,6 +223,7 @@ public class InputBinder : MonoBehaviour, IPlayerActions, IUIActions
     {
      
     }
+
 
     #endregion
 }
