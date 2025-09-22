@@ -8,7 +8,7 @@ namespace Utils
         {
             if (reference == null)
             {
-                throw new System.NullReferenceException($"Object {monoBehaviour.name} reference to a {nameof(T)} is not assigned in the inspector. Please assign it before playing.");
+                throw new System.NullReferenceException($"Object {monoBehaviour.name} reference to a {typeof(T)} is not assigned in the inspector. Please assign it before playing.");
             }
         }
     }

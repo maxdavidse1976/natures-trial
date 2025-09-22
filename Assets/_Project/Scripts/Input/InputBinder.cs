@@ -34,6 +34,18 @@ public class InputBinder : MonoBehaviour, IPlayerActions, IUIActions
         _uiInputs.Disable();
     }
 
+    public void RequestGameplayEnable()
+    {
+        Debug.Log("Enabling player inputs due to request");
+        _playerInputs.Enable();
+    }
+
+    public void RequestGameplayDisable()
+    {
+        Debug.Log("Disabling player inputs due to request");
+        _playerInputs.Disable();
+    }
+
     #region Individual Listeners
 
     public void AddMoveListener(IMoveListener listener)
