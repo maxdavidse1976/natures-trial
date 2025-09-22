@@ -26,26 +26,6 @@ public class PlayerCharacterPlantCropComponent : MonoBehaviour, IPlantCropListen
         _inputBinder?.RemovePlantCropListener(this);
     }
 
-    void CheckForTile()
-    {
-        Ray ray = new Ray(_playerCamera.transform.position, _playerCamera.transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, _interactRange))
-        {
-            SoilTile tile = hit.collider.GetComponent<SoilTile>();
-            if (tile != null) 
-            { 
-                _currentTile = tile;
-                ShowPrompt();
-                return;
-            }
-        }
-
-        _currentTile = null;
-        HidePrompt();
-    }
-
     void ShowPrompt()
     {
         // We need to hook this up to UI System still
@@ -64,7 +44,6 @@ public class PlayerCharacterPlantCropComponent : MonoBehaviour, IPlantCropListen
 
     public void OnPlantCropPerformed(InputAction.CallbackContext context)
     {
-        CheckForTile();
         if (_currentTile != null)
         {
             _currentTile.PlantCrop();

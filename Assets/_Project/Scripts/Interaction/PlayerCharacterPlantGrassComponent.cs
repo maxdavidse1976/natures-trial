@@ -26,32 +26,6 @@ public class PlayerCharacterPlantGrassComponent : MonoBehaviour, IPlantGrassList
         _inputBinder?.RemovePlantGrassListener(this);
     }
 
-    void CheckForTile()
-    {
-        Ray ray = new Ray(_playerCamera.transform.position, _playerCamera.transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, _interactRange))
-        {
-            SoilTile tile = hit.collider.GetComponent<SoilTile>();
-            if (tile != null) 
-            { 
-                _currentTile = tile;
-                ShowPrompt();
-                return;
-            }
-        }
-
-        _currentTile = null;
-        HidePrompt();
-    }
-
-    void ShowPrompt()
-    {
-        // We need to hook this up to UI System still
-        Debug.Log("Looking at soil: Press [1] Plant Crop, [2] Plant Grass, [3] Water");
-    }
-
     void HidePrompt()
     {
         // Clear the UI message
@@ -64,7 +38,6 @@ public class PlayerCharacterPlantGrassComponent : MonoBehaviour, IPlantGrassList
 
     public void OnPlantGrassPerformed(InputAction.CallbackContext context)
     {
-        CheckForTile();
         if (_currentTile != null)
         {
             _currentTile.PlantGrass();
