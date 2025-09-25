@@ -43,7 +43,6 @@ public class FarmlandManager : MonoBehaviour
 
     private void Start()
     {
-        StartNewInterval();
     }
 
     private void OnDisable()
