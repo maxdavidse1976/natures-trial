@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Utils;
 
@@ -22,6 +23,7 @@ public class FarmlandTile : MonoBehaviour, ILookHoverer
     private Material _defaultMaterial;
     private bool _isAffected = false;
     private Color _tint;
+    private Coroutine _shrinkCoroutine;
 
     private void Awake()
     {
@@ -70,9 +72,25 @@ public class FarmlandTile : MonoBehaviour, ILookHoverer
     {
         // Logic for withering the plant
         Debug.Log("The plant has withered.");
+        gameObject.layer = LayerMask.NameToLayer("UI"); // Change layer to avoid blocking interactions
+        _shrinkCoroutine = StartCoroutine(ShrinkAndClear());
+        OnWithered?.Invoke(this);
+    }
+
+    private IEnumerator ShrinkAndClear()
+    {
+        _dustEffect.Stop();
+        float alpha = 0.0f;
+        while (alpha <= 1.0f)
+        {
+            alpha += Time.deltaTime;
+            _plantRoot.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, Mathf.Clamp01(alpha));
+            yield return null;
+        }
+
         ClearDustEffect();
         _plantRoot.SetActive(false);
-        OnWithered?.Invoke(this);
+        _shrinkCoroutine = null;
     }
 
     private void ClearDustEffect()

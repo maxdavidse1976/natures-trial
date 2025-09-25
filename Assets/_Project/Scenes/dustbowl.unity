@@ -476,8 +476,8 @@ MonoBehaviour:
   - {fileID: 1958044960}
   - {fileID: 1484168764}
   - {fileID: 1229805691}
-  _interval: 1
-  _intervalVariation: 0
+  _interval: 3
+  _intervalVariation: 1
   _affectedCount: 2
   _onPlantWithered:
     m_PersistentCalls:
