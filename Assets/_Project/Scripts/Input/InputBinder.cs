@@ -134,7 +134,7 @@ public class InputBinder : MonoBehaviour, IPlayerActions, IUIActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        
+        _interactAction?.Invoke();
     }
 
     public void OnInteract(InputAction.CallbackContext context)

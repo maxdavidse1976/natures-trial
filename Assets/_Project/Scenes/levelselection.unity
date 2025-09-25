@@ -2177,7 +2177,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tooltipData: {fileID: 11400000, guid: fa54db9ad363cca4daf1f2a1ef45a9b8, type: 2}
   _tooltipTitle: Dust Bowl of the 1930s
-  _tooltipDescription: Keep your farm alive!
+  _tooltipDescription: 'Keep your farm alive!
+
+
+
+    <i>Click to start level</i>'
   _tooltipInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -2279,7 +2283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73713e5f23ed529448fd81ac4ae9bc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneData: {fileID: 11400000, guid: 6c37b55ecad53ea448552f1d9012eb6d, type: 2}
+  _sceneData: {fileID: 11400000, guid: 3ebfeef35f3b974498b0e438e06683cb, type: 2}
   _transitionAnimator: {fileID: 1172676651}
   _transitionTrigger: {fileID: 11400000, guid: 40284954deaf21a4eb10af5dae956ef8, type: 2}
 --- !u!1 &2036913639
