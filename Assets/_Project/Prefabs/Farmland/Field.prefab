@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _plantRoot: {fileID: 2730697776132766995}
   _dustEffect: {fileID: 5381119146648244956}
+  _plantRenderer: {fileID: 6994798392726801669}
+  _highlightMaterial: {fileID: 2100000, guid: 66a03d7e561bb2a4294d56b6079a7f6a, type: 2}
   _health: 60
 --- !u!136 &1162828047819468055
 CapsuleCollider:
@@ -167,6 +169,11 @@ GameObject:
 --- !u!198 &5381119146648244956 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 676101754999363373, guid: 9f9abb9282ec30e4eb2c06f7001cc890, type: 3}
+  m_PrefabInstance: {fileID: 4885400284324742641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6994798392726801669 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2512702621642426612, guid: 9f9abb9282ec30e4eb2c06f7001cc890, type: 3}
   m_PrefabInstance: {fileID: 4885400284324742641}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5466220308731510008
