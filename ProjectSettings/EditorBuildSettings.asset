@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Project/Scenes/levelselection.unity
+    guid: af2b1dc081bfc414bb78b5793b1a8bf1
+  - enabled: 1
     path: Assets/_Project/Scenes/dustbowl.unity
     guid: 7d9a426a79634b1468f071afbf36d6bd
   m_configObjects:
