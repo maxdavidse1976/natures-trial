@@ -7117,7 +7117,7 @@ GameObject:
   - component: {fileID: 1772577652}
   - component: {fileID: 1772577654}
   - component: {fileID: 1772577653}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7155,7 +7155,7 @@ TerrainCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: 041032e4ddc26d64e9c48557213d1292, type: 2}
   m_EnableTreeColliders: 1
