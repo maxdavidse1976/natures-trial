@@ -40,6 +40,12 @@ public class MouseCameraLook : MonoBehaviour, ILookListener
         _inputBinder?.RemoveLookListener(this);
     }
 
+    public void SetIsCursorLock(bool isLocked)
+    {
+        _cursorMode = isLocked ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.lockState = _cursorMode;
+    }
+
     #region ILookListener Interface
 
     public void OnLookCanceled(InputAction.CallbackContext context)

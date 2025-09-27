@@ -15,6 +15,7 @@ public class SceneLoadingComponent : MonoBehaviour
     private AnimatorParameterHasher _transitionTrigger;
 
     private bool _isLoading = false;
+    private Action _onLoad;
 
     private void Awake()
     {
@@ -23,7 +24,29 @@ public class SceneLoadingComponent : MonoBehaviour
         this.AssertReference(_transitionTrigger);
     }
 
+    public void ReloadLevel()
+    {
+        if (_isLoading)
+        {
+            return;
+        }
+
+        _onLoad = AsyncReloadLevel;
+        StartLoadTransition();
+    }
+
     public void StartLoadingLevel()
+    {
+        if (_isLoading)
+        {
+            return;
+        }
+
+        _onLoad = AsyncLoadTargetLevel;
+        StartLoadTransition();
+    }
+
+    private void StartLoadTransition()
     {
         if (_isLoading)
         {
@@ -35,7 +58,6 @@ public class SceneLoadingComponent : MonoBehaviour
         _transitionAnimator.SetTriggerParameter(_transitionTrigger);
     }
 
-
     private void OnTransitionCompleted()
     {
         _transitionAnimator.TransitionCompleted -= OnTransitionCompleted;
@@ -43,6 +65,17 @@ public class SceneLoadingComponent : MonoBehaviour
     }
 
     private void AsyncLoadLevel()
+    {
+        _onLoad?.Invoke();
+    }
+
+    private void AsyncReloadLevel()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        asyncLoad.completed += OnAsyncLoadCompleted;
+    }
+
+    private void AsyncLoadTargetLevel()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_sceneData.SceneName);
         asyncLoad.completed += OnAsyncLoadCompleted;

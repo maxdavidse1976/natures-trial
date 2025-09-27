@@ -23,11 +23,15 @@ public class FarmlandManager : MonoBehaviour
     [SerializeField]
     private UnityEvent _onPlantDustCleared;
 
+    public int ActivePlantCount => _activePlants.Count;
+    public int HealthyPlantCount => _healthyPlants.Count;
+
     private List<FarmlandTile> _activePlants = new();
     private List<FarmlandTile> _healthyPlants = new();
     private List<FarmlandTile> _inactivePlants = new();
     private float _iterationVariation;
     private float _time;
+
 
     private void Awake()
     {
