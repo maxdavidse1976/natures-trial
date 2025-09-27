@@ -51,7 +51,7 @@ MonoBehaviour:
   _dustEffect: {fileID: 5381119146648244956}
   _plantRenderer: {fileID: 6994798392726801669}
   _highlightMaterial: {fileID: 2100000, guid: 66a03d7e561bb2a4294d56b6079a7f6a, type: 2}
-  _health: 60
+  _health: 30
 --- !u!136 &1162828047819468055
 CapsuleCollider:
   m_ObjectHideFlags: 0
